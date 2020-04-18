@@ -24,7 +24,7 @@ assert_response :success
 assert_select "title", "Contact | #{@base_title}"
 end
 test "should get root" do
-get static_pages_contact_url
+get static_pages_root_url
 assert_response :success
 assert_select "title", "Root | #{@base_title}"
 end
