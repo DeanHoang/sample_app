@@ -1,0 +1,18 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+<ul class="users">
+	<%= will_paginate @users %>
+	<% @users.each do |user| %>
+		<li>
+		<%= gravatar_for user %>
+		<%= link_to user.name, user %> ||
+		<%= 	user.email %> ||
+
+		<% if current_user.is_admin && current_user != user %>
+			<%= link_to "Delete", user_path(id: user.id), method: :delete,
+			class: "btn btn-danger", data: {confirm: "Are you sure delete #{user.name} ?"} %>
+		<%end%>
+		</li>
+	<% end %>
+	<%= will_paginate @users %>
+</ul>
